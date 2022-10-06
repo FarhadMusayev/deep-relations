@@ -55,14 +55,18 @@ Route::get('has-many-5', function () {
     return Post::whereBelongsTo($user)->get();
 });
 
-Route::get('latest',function (){
+Route::get('latest', function () {
     return User::find(2)->latestPost()->get();
 });
 
-Route::get('oldest',function (){
+Route::get('oldest', function () {
     return User::find(2)->oldestPost()->get();
 });
 
-Route::get('current',function (){
-   return User::find(2)->currentPost()->get();
+Route::get('current', function () {
+    return User::find(2)->currentPost()->get();
+});
+
+Route::get('has-one-through', function () {
+    return User::find(2)->comments()->get();
 });

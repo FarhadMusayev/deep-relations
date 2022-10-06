@@ -5,6 +5,7 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\HasOneThrough;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
@@ -67,6 +68,11 @@ class User extends Authenticatable
         ], function ($q) {
             $q->where('created_at', '<', now());
         });
+    }
+
+    public function comments(): HasOneThrough
+    {
+        return $this->hasOneThrough(Comment::class,Post::class);
     }
 
 
