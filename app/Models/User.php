@@ -43,16 +43,10 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    protected $primaryKey = 'id';
-
     public function phone(): HasOne
     {
         return $this->hasOne(Phone::class, 'user_id', 'id');
     }
 
-//    public function phone(): HasOne
-//    {
-//        return $this->hasOne(Phone::class);
-//    }
 
 }
