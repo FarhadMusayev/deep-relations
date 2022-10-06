@@ -49,9 +49,24 @@ class User extends Authenticatable
     }
 
 
-    public function latestPost()
+    public function latestPost(): HasOne
     {
         return $this->hasOne(Post::class)->latestOfMany();
+    }
+
+    public function oldestPost(): HasOne
+    {
+        return $this->hasOne(Post::class)->oldestOfMany();
+    }
+
+    public function currentPost(): HasOne
+    {
+        return $this->hasOne(Post::class)->ofMany([
+            'id' => 'max',
+            'created_at' => 'max'
+        ], function ($q) {
+            $q->where('created_at', '<', now());
+        });
     }
 
 
