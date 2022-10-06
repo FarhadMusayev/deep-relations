@@ -21,3 +21,7 @@ Route::get('/', function () {
 Route::get('/has-one', function () {
    return User::with('phone')->get();
 });
+
+Route::get('/has-one-2',function (){
+   return \App\Models\Phone::with('user')->get();
+});
