@@ -16,3 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/has-one', function () {
+   return \App\Models\User::with('phone')->get();
+});
