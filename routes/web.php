@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,5 +19,5 @@ Route::get('/', function () {
 });
 
 Route::get('/has-one', function () {
-   return \App\Models\User::with('phone')->get();
+   return User::with('phone')->get();
 });
