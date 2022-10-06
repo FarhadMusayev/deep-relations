@@ -42,3 +42,9 @@ Route::get('/has-many-2', function () {
 Route::get('has-many-3', function () {
     return Comment::find(1)->post->text;
 });
+
+Route::get('has-many-4', function () {
+    $post = Post::find(1);
+    $owner = $post->user;
+    return $owner;
+});
