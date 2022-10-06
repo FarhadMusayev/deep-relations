@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Comment;
 use App\Models\Phone;
 use App\Models\Post;
 use App\Models\User;
@@ -32,8 +33,12 @@ Route::get('/has-many', function () {
     return Post::find(13)->comments;
 });
 
-Route::get('/has-many-2',function (){
+Route::get('/has-many-2', function () {
     return Post::find(13)->comments()
-        ->where('comment','quod')
+        ->where('comment', 'quod')
         ->first();
+});
+
+Route::get('has-many-3', function () {
+    return Comment::find(1)->post->text;
 });
