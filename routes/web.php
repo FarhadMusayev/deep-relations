@@ -48,3 +48,13 @@ Route::get('has-many-4', function () {
     $owner = $post->user;
     return $owner;
 });
+
+Route::get('has-many-5', function () {
+    $user = User::find(2);
+
+    return Post::whereBelongsTo($user)->get();
+});
+
+Route::get('latest',function (){
+    return User::find(2)->latestPost()->get();
+});
