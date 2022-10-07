@@ -12,7 +12,7 @@ class Image extends Model
 
     protected $guarded = ['id'];
 
-    public function imageable(): MorphTo
+    public function imaginable(): MorphTo
     {
         return $this->morphTo();
     }
