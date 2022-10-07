@@ -3,7 +3,9 @@
 use App\Models\Comment;
 use App\Models\Phone;
 use App\Models\Post;
+use App\Models\Tag;
 use App\Models\User;
+use App\Models\Video;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -74,4 +76,33 @@ Route::get('has-one-through', function () {
 Route::get('/poli-one-to-one', function () {
     $post = Post::find(2);
     return $post->image;
+});
+
+Route::get('/poli-many-to-many', function () {
+//    $post = Post::create([
+//       'user_id' => 1
+//    ]);
+
+//    $post->tags()->create([
+//       'name' => 'laravel'
+//    ]);
+
+//    $post = Post::find(1);
+//
+//    $tag = \App\Models\Tag::create([
+//        'name' => 'PHP'
+//    ]);
+//
+//    $post->tags()->attach($tag);
+
+    $video = Video::create([
+        'title' => 'Video title 1'
+    ]);
+
+    $tag = Tag::find(1);
+
+    $video->tags()->attach($tag);
+
+    return view('welcome');
+
 });
