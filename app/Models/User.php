@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\HasOneThrough;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -77,9 +78,9 @@ class User extends Authenticatable
         return $this->hasManyThrough(Comment::class, Post::class);
     }
 
-    public function image(): MorphOne
+    public function image(): MorphMany
     {
-        return $this->morphOne(Image::class,'imaginable');
+        return $this->morphMany(Image::class,'imageable');
     }
 
 

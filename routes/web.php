@@ -73,5 +73,5 @@ Route::get('has-one-through', function () {
 
 Route::get('/poli-one-to-one', function () {
     $post = Post::find(2);
-    return $post->imageable;
+    return $post->image;
 });

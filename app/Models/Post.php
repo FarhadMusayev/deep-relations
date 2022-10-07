@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
+use Illuminate\Database\Eloquent\Relations\MorphOne;
 
 class Post extends Model
 {
@@ -26,8 +27,8 @@ class Post extends Model
         ]);
     }
 
-    public function image(): MorphMany
+    public function image(): MorphOne
     {
-        return $this->morphMany(Image::class, 'imaginable');
+        return $this->morphOne(Image::class, 'imageable')->oldestOfMany();
     }
 }
