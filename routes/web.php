@@ -70,3 +70,8 @@ Route::get('current', function () {
 Route::get('has-one-through', function () {
     return User::find(2)->comments()->get();
 });
+
+Route::get('/poli-one-to-one', function () {
+    $post = Post::find(2);
+    return $post->image;
+});

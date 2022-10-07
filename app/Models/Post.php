@@ -24,4 +24,9 @@ class Post extends Model
             'name' => 'LuzSec Anonymous'
         ]);
     }
+
+    public function image()
+    {
+        return $this->morphMany(Image::class, 'imageable');
+    }
 }
