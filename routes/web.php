@@ -106,3 +106,7 @@ Route::get('/poli-many-to-many', function () {
     return view('welcome');
 
 });
+
+Route::get('more-3-foreign-key', function () {
+   return \App\Models\Teacher::with('payments')->get();
+});
