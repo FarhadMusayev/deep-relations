@@ -60,7 +60,7 @@ class User extends Authenticatable
         return $this->hasOne(Post::class)->oldestOfMany();
     }
 
-    public function currentPost(): HasOne
+    public function lastPostInNowFromPast(): HasOne
     {
         return $this->hasOne(Post::class)->ofMany([
             'id' => 'max',
